@@ -1,18 +1,19 @@
 import json
-import pathlib
-import compile
+import pathlib as pathl
 from http.server import SimpleHTTPRequestHandler
 from socketserver import TCPServer
-import os
 
+# Loads in the Header json
 with open('server\\header.json', 'r') as f:
   header_json : dict[str, str] = json.load(f)
 
 def use_header(fileDir : str) -> str | None:
-  extension : str = pathlib.Path(fileDir).suffix
+  extension : str = pathl.Path(fileDir).suffix
   final : str | None = None
 
-  for key, value in header_json:
+  print(header_json)
+
+  for key, value in header_json.items():
     if extension != key:
       continue
 
@@ -22,7 +23,7 @@ def use_header(fileDir : str) -> str | None:
   return final
 
 class MyHandler(SimpleHTTPRequestHandler):
-  def end_header(self):
+  def end_headers(self):
     # Set the appropriate Content-Type header for HTML and CSS files
 
     path : str = self.path
@@ -34,11 +35,10 @@ class MyHandler(SimpleHTTPRequestHandler):
 
     super().end_headers()
 
+import compile
 
-print("Current Working Directory:", os.getcwd())
 compile.scss_to_css()
 compile.ts_to_js()
-
 
 print("Finished compiling sass stylesheets")
 

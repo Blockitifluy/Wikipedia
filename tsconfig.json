@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "noImplicitAny": true,
+    "module": "ES2022",
+    "lib": ["ES2022", "DOM"],
+    "noImplicitAny": false,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
+    "sourceMap": true,
   },
-  "include": ["src/**/*"],
-  "exclude": []
+  "files": [
+    "./app/src/script.ts"
+  ]
 }

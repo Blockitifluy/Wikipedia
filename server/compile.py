@@ -12,9 +12,7 @@ def ts_to_js():
     input_file = os.path.abspath(f"app/src/{ts_file}.ts")
     output_file = os.path.abspath(f"app/resources/{ts_file}.js")
 
-    print(input_file, output_file)
-
-    result = subprocess.run([tsc_path, input_file, "--outFile", output_file], capture_output=True, text=True) #TODOs
+    subprocess.run([tsc_path, input_file, "--outFile", output_file], capture_output=True, text=True) #TODOs
 
 # This is temporary replace with a compile styles function 
 def scss_to_css():

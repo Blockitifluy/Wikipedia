@@ -1,7 +1,7 @@
 {
   "html" : "text/html",
   "css" : "text/css",
-  "js" : "text/javascript",
+  "js" : "application/javascript",
   "jpg" : "image/jpeg",
   "jpeg" : "image/jpeg",
   "png" : "image/png"
