@@ -63,5 +63,5 @@ function GeneratingPage() {
         });
     });
 }
-GeneratingPage();
-Refresh();
+//GeneratingPage();
+//Refresh();

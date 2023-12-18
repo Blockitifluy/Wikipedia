@@ -3,13 +3,14 @@ body {
   padding: 0px;
   background-color: #fefae0ff;
   color: #283618ff;
+  background-color: palegreen;
 }
 
 nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/public/navagation_background.jpg");
+  /*background-image: url("/public/navagation_background.jpg");*/
   background-repeat: no-repeat;
   width: 100vw;
   height: 20em;

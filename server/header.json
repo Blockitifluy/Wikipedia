@@ -4,5 +4,6 @@
   "js" : "application/javascript",
   "jpg" : "image/jpeg",
   "jpeg" : "image/jpeg",
-  "png" : "image/png"
+  "png" : "image/png",
+  "ico" : "image/x-icon"
 }

@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Server Launcher",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/server.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    
+    {
+      "name": "API Launcher",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/server/api.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
