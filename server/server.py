@@ -1,5 +1,3 @@
-import json
-import pathlib as pathl
 import os
 import mimetypes
 import http.server as http
@@ -22,42 +20,20 @@ class Server(http.BaseHTTPRequestHandler):
 
     content_type = mimetypes.guess_type(file_path)
 
-    print(file_path)
-
     try:
-      print(file_path)
-
-      with open(file_path, "r") as f:
+      with open(file_path, "rb") as f:
         content = f.read()
 
-        self.send_response(200)
+      self.send_response(200)
     except FileNotFoundError:
-      content = ""
+      content = bytes()
 
       self.send_response(404)
 
     self.send_header("Content-type", content_type)
     self.end_headers()
+    self.wfile.write(content)
 
-    self.wfile.write(bytes(content, "utf-8"))
-
-# Loads in the Header json
-with open(os.path.abspath('server\\header.json'), 'r') as f:
-  header_json : dict[str, str] = json.load(f)
-  print(header_json)
-
-def use_header(fileDir : str) -> tuple[str, str]:
-  extension : str = pathl.Path(fileDir).suffix
-
-  final_header : str = ""
-  for key, value in header_json.items():
-    if extension != key:
-      continue
-
-    final_header = value
-    break
-
-  return (final_header, extension)
 
 def load_server():
   webServer = http.HTTPServer((HOST_NAME, PORT), Server)

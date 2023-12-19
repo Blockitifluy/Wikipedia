@@ -5,7 +5,7 @@ app = Flask(__name__)
 PORT : int = 8050
 HOST_NAME : str = "localhost"
 
-@app.route('/', method=['GET'])
+@app.route('/get_page', method=['GET'])
 def get_page(name : str):
   response = {'message' : name}
 

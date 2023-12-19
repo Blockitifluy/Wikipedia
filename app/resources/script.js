@@ -45,7 +45,7 @@ function GeneratingPage() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("/get_page?page=".concat(encodeURIComponent(fileName)))];
+                    return [4 /*yield*/, fetch("localhost:8050/get_page?page=".concat(encodeURIComponent(fileName)))];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
@@ -63,5 +63,5 @@ function GeneratingPage() {
         });
     });
 }
-//GeneratingPage();
-//Refresh();
+GeneratingPage();
+Refresh();

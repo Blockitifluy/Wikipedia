@@ -13,7 +13,7 @@ function Refresh() : void {
 
 async function GeneratingPage() {
   try {
-    const response : Response = await fetch(`/get_page?page=${encodeURIComponent(fileName)}`);
+    const response : Response = await fetch(`http://localhost:8050/get_page?page=${encodeURIComponent(fileName)}`);
     const data : PageContent = await response.json();
 
     console.log(data);
