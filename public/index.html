@@ -3,9 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script>
+    //Loads css
+    const url = "http://localhost:8000/app/resources/article.css";
+
+    fetch(url)
+    .then(r => r.text())
+    .then(file => {
+      let Stylesheet = document.createElement("style");
+      Stylesheet.textContent = file;
+
+      document.querySelector("head").appendChild(Stylesheet)
+    });
+  </script>
+
   <script src="/app/resources/script.js" defer></script>
   <title>Wikipedia</title>
-  <link rel="stylesheet" type="text/css" href="/app/resources/article.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
 </head>
 <body>
