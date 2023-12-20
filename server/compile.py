@@ -2,8 +2,8 @@ import os
 import sass
 import subprocess
 
-STYLE_FILES = ["article"]
-TS_FILES = ["script"]
+STYLE_FILES = ["front"]
+TS_FILES = ["script", "search"]
 
 def ts_to_js():
   tsc_path = "C:\\Users\\zurie\\AppData\\Roaming\\npm\\tsc.cmd"

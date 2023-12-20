@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+$jet: #353535ff;
+$caribbean-current: #3c6e71ff;
+$white: #ffffffff;
+$platinum: #d9d9d9ff;
+$indigo-dye: #284b63ff;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
+}
+
+nav {
+  padding: 10px;
+
+  display: flex;
+  flex-direction: row;
+  height: 45px;
+  width: 90%;
+  margin: auto;
+
+  margin-bottom: 45px;
+
+  h1 {
+    width: 65%;
+    height: 100%;
+    margin: 0px;
+    margin-left: 10px;
+    line-height: 45px;
+    color: $jet;
+  }
+  
+  .container {
+    width: 35%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    & > * {
+      width: fit-content;
+      background-color: $white;
+      color: $caribbean-current;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px;
+
+      & > i {
+        display: inline-block;
+      }
+
+      &::after:hover {
+        border: $caribbean-current 5px solid;
+        padding: 0px;
+      }
+    }
+    
+
+    & > .selected {
+      background-color: $caribbean-current;
+      color: $white;
+    }
+  }
+
+}
+
+main {
+  width: 50em;
+  margin: auto;
+  height: fit-content;
+}
+
+#hero {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  row-gap: 0px;
+  align-items: center;
+  justify-items: center;
+
+  width: 100%;
+  height: fit-content;
+
+  & > :nth-child(1) {
+    & > h1 {
+      font-size: 3em;
+      color: $jet;
+
+      & > span:nth-of-type(1) {
+        color: $platinum;
+        transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
+
+        &:hover {
+          color: $indigo-dye;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    width: 300px;
+    height: 300px;
+    aspect-ratio: 1;
+    filter: invert(27%) sepia(22%) saturate(1190%) hue-rotate(161deg) brightness(87%) contrast(89%);
+  }
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 15px;
+
+  * {
+    border-radius: 0.5rem;
+    border: none;
+    padding: 8px;
+    font-weight: 700;
+    margin-right: 10px;
+  }
+
+  button#random-page {
+    background-color: $caribbean-current;
+    color: $white;
+    cursor: pointer;
+  }
+
+  input#searchbar {
+    background-color: $platinum;
+    color: $jet;
+  }
+}
+
+#questions {
+  & > :first-child {
+    color: $jet;
+    width: 100%;
+    text-align: center;
+  }
+
+  & > details {
+    padding-left: 10px;
+    border-bottom: 1px solid $jet;
+
+    margin-bottom: 15px;
+
+    & > summary {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 10px 10px 10px 0px;
+    }
+  }
+}
+
+footer {
+  background-color: $jet;
+  height: fit-content;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  
+  h2 {
+    color: $platinum;
+    margin-left: 15px;
+    margin-bottom: 20px;
+  }
+
+  .midpoint {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+
+    & > ul {
+      & > h3 {
+        color: $platinum;
+      }
+
+      & > li {
+        color: $white;
+        text-decoration: none;
+        list-style: none;
+
+        & > a {
+          text-decoration: none;
+          color: inherit;
+        }
+      }
+    }
+  }
+
+  & > :last-child {
+    color: $white;
+    margin: 15px;
+  }
+}

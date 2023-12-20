@@ -16,7 +16,10 @@ class Server(http.BaseHTTPRequestHandler):
       case "/favicon.ico":
         file_path = "public/favicon.ico"
       case "/":
-        file_path = "public/index.html"
+        file_path = "public/front.html"
+
+    if self.path.startswith("/wiki?page="):
+      file_path = "public/page.html"
 
     content_type = mimetypes.guess_type(file_path)
 
