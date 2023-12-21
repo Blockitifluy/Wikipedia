@@ -1,6 +1,27 @@
 import os
 import mimetypes
 import http.server as http
+import re
+
+def home_page(url : str) -> str:
+  return "public/front.html"
+
+def raw_txt(url : str) -> str:
+  #Placeholder
+  return "server/pages/photosynthesis.txt"
+
+def wiki_page(url : str) -> str:
+  return "public/page.html"
+
+def favicon(url : str) -> str:
+  return "public/favicon.ico"
+
+site_search = {
+  r"\/get_raw\?page=.+" : raw_txt,
+  r"\/wiki\?page=.+" : wiki_page,
+  r"\/favicon\.ico" : favicon,
+  r"\/" : home_page,
+}
 
 PORT : int = 8000
 HOST_NAME : str = "localhost"
@@ -12,14 +33,12 @@ class Server(http.BaseHTTPRequestHandler):
   def do_GET(self):
     file_path = self.path[1:]
 
-    match self.path:
-      case "/favicon.ico":
-        file_path = "public/favicon.ico"
-      case "/":
-        file_path = "public/front.html"
+    for url_search, funct in site_search.items():
+      matches : bool = len(re.findall(url_search, self.path)) == 1
 
-    if self.path.startswith("/wiki?page="):
-      file_path = "public/page.html"
+      if matches:
+        file_path = funct(self.path)
+        break
 
     content_type = mimetypes.guess_type(file_path)
 
@@ -33,7 +52,7 @@ class Server(http.BaseHTTPRequestHandler):
 
       self.send_response(404)
 
-    self.send_header("Content-type", content_type)
+    self.send_header("Content-type", content_type) # type: ignore
     self.end_headers()
     self.wfile.write(content)
 

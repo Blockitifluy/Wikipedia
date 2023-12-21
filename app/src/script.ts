@@ -15,7 +15,7 @@ async function GeneratingPage() {
 
 
   try {
-    const response : Response = await fetch(`http://localhost:8080/get_page?page=${encodeURIComponent(fileName)}`);
+    const response : Response = await fetch(`http://localhost:8000/get_raw?page=${encodeURIComponent(fileName)}`);
     const data : PageContent = await response.json();
 
     console.log(data);
