@@ -4,10 +4,12 @@
     "lib": ["ES2022", "DOM"],
     "noImplicitAny": false,
     "removeComments": true,
+    "downlevelIteration": true,
     "preserveConstEnums": true,
     "sourceMap": true,
   },
   "files": [
-    "./app/src/script.ts"
+    "./app/src/script.ts",
+    "./app/src/search.ts"
   ]
 }

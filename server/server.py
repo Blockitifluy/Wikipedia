@@ -1,14 +1,18 @@
 import os
 import mimetypes
 import http.server as http
+from furl import furl
 import re
 
 def home_page(url : str) -> str:
   return "public/front.html"
 
 def raw_txt(url : str) -> str:
-  #Placeholder
-  return "server/pages/photosynthesis.txt"
+  parsed_url = furl(url)
+
+  print(parsed_url.args['page'], type(parsed_url.args['page']))
+
+  return f"server/pages/{parsed_url.args['page']}.txt"
 
 def wiki_page(url : str) -> str:
   return "public/page.html"

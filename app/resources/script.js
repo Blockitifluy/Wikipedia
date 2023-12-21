@@ -34,9 +34,46 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var fileName = "Photosythesis", Article = document.querySelector("article");
-var pageContent = null;
-function Refresh() {
+var fileName = "photosynthesis";
+var ContentDiv = document.querySelector("article > #content"), StubDiv = document.querySelector("#stub");
+var PageData = {
+    Metadata: {
+        title: "Loading...",
+        stub: false
+    },
+    rawContent: "Loading...",
+    Content: []
+};
+function SearchRegExp(Regex, split, funct) {
+    for (var _i = 0, split_1 = split; _i < split_1.length; _i++) {
+        var line = split_1[_i];
+        var match = line.trim().match(Regex), doesMatch = match !== null;
+        if (!doesMatch) {
+            continue; //Skips
+        }
+        funct(match);
+    }
+}
+function LoadMeta(rawContent) {
+    var Meta = { title: "Loading...", stub: false };
+    var MetaRegex = /{([\w ]+)(?::([\w ]+))?}/, split = rawContent.split(/\n|\r|(?:\r\n)/g);
+    SearchRegExp(MetaRegex, split, function (match) {
+        var hasValue = match[2] !== undefined, key = match[1];
+        console.log(hasValue, match, hasValue ? match[2] : true);
+        Meta[key] = hasValue ? match[2] : true;
+    });
+    return Meta;
+}
+function LoadPage() {
+    var queryString = window.location.search, urlParams = new URLSearchParams(queryString);
+    fileName = decodeURIComponent(urlParams.get("page"));
+    GeneratingPage().then(function () {
+        ContentDiv.innerText = PageData.rawContent; //Temp
+        PageData.Metadata = LoadMeta(PageData.rawContent);
+        console.log(PageData);
+        StubDiv.setAttribute("data-hidden", PageData.Metadata.stub ? "1" : "0");
+        document.title = "Wikipedia - ".concat(PageData.Metadata.title);
+    }); //Loads pageContent
 }
 function GeneratingPage() {
     return __awaiter(this, void 0, void 0, function () {
@@ -45,14 +82,13 @@ function GeneratingPage() {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 3, , 4]);
-                    return [4 /*yield*/, fetch("http://localhost:8080/get_page?page=".concat(encodeURIComponent(fileName)))];
+                    return [4 /*yield*/, fetch("http://localhost:8000/get_raw?page=".concat(encodeURIComponent(fileName)))];
                 case 1:
                     response = _a.sent();
-                    return [4 /*yield*/, response.json()];
+                    return [4 /*yield*/, response.text()];
                 case 2:
                     data = _a.sent();
-                    console.log(data);
-                    pageContent = data;
+                    PageData.rawContent = data;
                     return [3 /*break*/, 4];
                 case 3:
                     error_1 = _a.sent();
@@ -63,5 +99,4 @@ function GeneratingPage() {
         });
     });
 }
-GeneratingPage();
-Refresh();
+LoadPage();

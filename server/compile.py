@@ -2,7 +2,7 @@ import os
 import sass
 import subprocess
 
-STYLE_FILES = ["front","global"]
+STYLE_FILES = ["front","article", "global"]
 TS_FILES = ["script", "search"]
 
 def ts_to_js():

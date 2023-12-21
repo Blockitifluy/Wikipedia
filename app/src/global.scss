@@ -9,6 +9,9 @@ body {
   background-color: white;
   margin: 0px;
   padding: 0px;
+
+  min-height: 100vh;
+  height: fit-content;
 }
 
 nav {
@@ -28,7 +31,7 @@ nav {
     margin: 0px;
     margin-left: 10px;
     line-height: 45px;
-    color: $jet;
+    color: $indigo-dye;
   }
   
   .container {
@@ -70,9 +73,12 @@ nav {
 footer {
   background-color: $jet;
   height: fit-content;
+  width: 100%;
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 15px;
+  position: absolute;
+  
   
   h2 {
     color: $platinum;
@@ -84,7 +90,8 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
+    max-width: 100%;
+    width: 50em;
 
     & > ul {
       & > h3 {
@@ -108,4 +115,8 @@ footer {
     color: $white;
     margin: 15px;
   }
+}
+
+[data-hidden="0"] {
+  display: none;
 }
