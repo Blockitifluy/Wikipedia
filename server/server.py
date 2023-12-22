@@ -1,4 +1,5 @@
 import os
+import pathlib
 import mimetypes
 import http.server as http
 from furl import furl
@@ -9,8 +10,6 @@ def home_page(url : str) -> str:
 
 def raw_txt(url : str) -> str:
   parsed_url = furl(url)
-
-  print(parsed_url.args['page'], type(parsed_url.args['page']))
 
   return f"server/pages/{parsed_url.args['page']}.txt"
 
@@ -45,6 +44,13 @@ class Server(http.BaseHTTPRequestHandler):
         break
 
     content_type = mimetypes.guess_type(file_path)
+
+    if pathlib.Path(file_path).suffix == "":
+      file_path += ".js"
+      
+    if pathlib.Path(file_path).suffix == ".js":
+      content_type = 'application/javascript'
+
 
     try:
       with open(file_path, "rb") as f:

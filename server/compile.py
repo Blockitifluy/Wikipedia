@@ -3,16 +3,15 @@ import sass
 import subprocess
 
 STYLE_FILES = ["front","article", "global"]
-TS_FILES = ["script", "search"]
+TS_FILES = ["Syntax", "Utility","script", "search"]
 
 def ts_to_js():
-  tsc_path = "C:\\Users\\zurie\\AppData\\Roaming\\npm\\tsc.cmd"
 
   for ts_file in TS_FILES:
     input_file = os.path.abspath(f"app/src/{ts_file}.ts")
     output_file = os.path.abspath(f"app/resources/{ts_file}.js")
 
-    subprocess.run([tsc_path, input_file, "--outFile", output_file], capture_output=True, text=True) #TODOs
+    subprocess.run(["tsc", input_file, "--outFile", output_file], capture_output=True, text=True) #TODOs
 
 # This is temporary replace with a compile styles function 
 def scss_to_css():

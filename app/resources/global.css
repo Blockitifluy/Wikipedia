@@ -65,7 +65,8 @@ footer {
   padding-top: 15px;
   padding-bottom: 15px;
   margin-top: 15px;
-  position: absolute;
+  bottom: 0px;
+  position: relative;
 }
 
 footer h2 {

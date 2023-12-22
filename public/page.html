@@ -19,7 +19,6 @@
     const urls = ["/app/resources/article.css", "/app/resources/global.css"];
 
     for (let [_, url] of urls.entries()) {
-      console.log(url, urls)
       fetch(url)
       .then(r => r.text())
       .then(file => {
@@ -32,7 +31,7 @@
 
   </script>
 
-  <script src="/app/resources/script.js" defer></script>
+  <script type="module" src="/app/resources/script.js" defer></script>
   <title>Wikipedia</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico"/>
 </head>
