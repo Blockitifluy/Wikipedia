@@ -1,8 +1,8 @@
-{stub}
-{title:Photosynthesis}
+{stub}○
+{title:Photosynthesis}○
 
-Lorem Ipsum
+Lorem Ipsum○
 
-# Hello World
+# Hello World○
 
-foo bar
+foo bar○

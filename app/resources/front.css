@@ -16,67 +16,9 @@ main {
   height: fit-content;
 }
 
-#hero > :nth-child(1) > h1 {
-  font-size: 3em;
-  color: #353535ff;
-}
-
-#hero > :nth-child(1) > h1 > span:nth-of-type(1) {
-  color: #d9d9d9ff;
-  transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
-}
-
-#hero > :nth-child(1) > h1 > span:nth-of-type(1):hover {
-  color: #284b63ff;
-}
-
-#hero > :nth-child(2) {
-  width: 300px;
-  height: 300px;
-  aspect-ratio: 1;
-  filter: invert(27%) sepia(22%) saturate(1190%) hue-rotate(161deg) brightness(87%) contrast(89%);
-}
-
 #buttons {
   display: flex;
   flex-direction: row;
   width: 100%;
   margin-top: 15px;
-}
-
-#buttons * {
-  border-radius: 0.5rem;
-  border: none;
-  padding: 8px;
-  font-weight: 700;
-  margin-right: 10px;
-}
-
-#buttons button#random-page {
-  background-color: #3c6e71ff;
-  color: #ffffffff;
-  cursor: pointer;
-}
-
-#buttons input#searchbar {
-  background-color: #d9d9d9ff;
-  color: #353535ff;
-}
-
-#questions > :first-child {
-  color: #353535ff;
-  width: 100%;
-  text-align: center;
-}
-
-#questions > details {
-  padding-left: 10px;
-  border-bottom: 1px solid #353535ff;
-  margin-bottom: 15px;
-}
-
-#questions > details > summary {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin: 10px 10px 10px 0px;
 }

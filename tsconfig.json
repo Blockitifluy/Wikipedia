@@ -1,12 +1,19 @@
 {
   "compilerOptions": {
-    "module": "ES2022",
-    "lib": ["ES2022", "DOM"],
-    "noImplicitAny": false,
-    "removeComments": true,
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "ES2022", "ES2022.Array", "ES2022.Object"],
+    "allowJs": true,
     "downlevelIteration": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "noEmit": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true
   },
   "files": [
     "./app/src/script.ts",

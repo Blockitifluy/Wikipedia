@@ -42,7 +42,7 @@ function LoadMeta(rawContent : string) : PageMetadata {
   let Meta : PageMetadata = {title : "Loading...", stub : false};
 
   const MetaRegex : RegExp = /{([\w ]+)(?::([\w ]+))?}/,
-  split : string[] = rawContent.split(/\n|\r|(?:\r\n)/g);
+  split : string[] = rawContent.split(/○/g);
   
   SearchRegExp(MetaRegex, split, (match) => {
     let hasValue : boolean = match[2] !== undefined,

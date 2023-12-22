@@ -94,10 +94,6 @@ footer {
     width: 50em;
 
     & > ul {
-      & > h3 {
-        color: $platinum;
-      }
-
       & > li {
         color: $white;
         text-decoration: none;
@@ -119,4 +115,152 @@ footer {
 
 [data-hidden="0"] {
   display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $jet;
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.light-txt {
+  color: $platinum;
+}
+
+.dark-input, .light-input {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 8px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.dark-input {
+  background-color: $caribbean-current;
+  color: $white;
+}
+
+.light-input {
+  background-color: $platinum;
+  color: $jet;
+}
+
+details {
+  padding-left: 10px;
+  border-bottom: 1px solid $jet;
+
+  margin-bottom: 15px;
+
+  & > summary {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 10px 10px 0px;
+  }
+}
+
+.dark-grey-filter {
+  filter: invert(27%) sepia(22%) saturate(1190%) hue-rotate(161deg) brightness(87%) contrast(89%);
+}
+
+.square-300 {
+  width: 300px;
+  height: 300px;
+  aspect-ratio: 1;
+}
+
+h1.huge {
+  font-size: 3em;
+}
+
+h1.main {
+  border-bottom: 1px solid $platinum;
+  font-size: 2em;
+}
+
+div.info-tag {
+  border: 2px $caribbean-current solid;
+  border-radius: 1rem;
+  margin: 30px 0px;
+  padding: 0px 15px;
+
+  & > h2:first-child {
+    color: $caribbean-current;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dark-txt {
+  color: $indigo-dye;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+li {
+  &.list-button {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  &.tab-1, &.tab-2, &.tab-3, &.tab-4, &.tab-5, *.tab-6 {
+    margin: 0px 0px 0px 0px;
+  }
+
+  &.tab-1 {
+    margin-left: 0px !important;
+  }
+
+  &.tab-2 {
+    margin-left: 10px !important;
+  }
+
+  &.tab-3 {
+    margin-left: 20px !important;
+  }
+
+  &.tab-4 {
+    margin-left: 30px !important;
+  }
+
+  &.tab-5 {
+    margin-left: 40px !important;
+  }
+
+  &.tab-6 {
+    margin-left: 50px !important;
+  }
+}
+
+button.toggle-hide {
+  border: none;
+  padding: 8px;
+  transition: all 500ms;
+  height: 2em;
+  margin-left: 10px;
+  border-radius: 0.5em;
+
+  &[data-hidden="true"] {
+    background-color: $caribbean-current;
+    
+    &::before {
+      color: $white;
+      content: "Show";
+    }
+  }
+
+  &[data-hidden="false"] {
+    background-color: $platinum;
+
+    &::before {
+      color: $jet;
+      content: "Hide";
+    }
+  }
 }

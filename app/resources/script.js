@@ -56,7 +56,7 @@ function SearchRegExp(Regex, split, funct) {
 }
 function LoadMeta(rawContent) {
     var Meta = { title: "Loading...", stub: false };
-    var MetaRegex = /{([\w ]+)(?::([\w ]+))?}/, split = rawContent.split(/\n|\r|(?:\r\n)/g);
+    var MetaRegex = /{([\w ]+)(?::([\w ]+))?}/, split = rawContent.split(/○/g);
     SearchRegExp(MetaRegex, split, function (match) {
         var hasValue = match[2] !== undefined, key = match[1];
         console.log(hasValue, match, hasValue ? match[2] : true);

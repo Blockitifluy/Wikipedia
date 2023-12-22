@@ -82,10 +82,6 @@ footer .midpoint {
   width: 50em;
 }
 
-footer .midpoint > ul > h3 {
-  color: #d9d9d9ff;
-}
-
 footer .midpoint > ul > li {
   color: #ffffffff;
   text-decoration: none;
@@ -104,4 +100,149 @@ footer > :last-child {
 
 [data-hidden="0"] {
   display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #353535ff;
+  margin: 0px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.light-txt {
+  color: #d9d9d9ff;
+}
+
+.dark-input, .light-input {
+  border-radius: 0.5rem;
+  border: none;
+  padding: 8px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.dark-input {
+  background-color: #3c6e71ff;
+  color: #ffffffff;
+}
+
+.light-input {
+  background-color: #d9d9d9ff;
+  color: #353535ff;
+}
+
+details {
+  padding-left: 10px;
+  border-bottom: 1px solid #353535ff;
+  margin-bottom: 15px;
+}
+
+details > summary {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 10px 10px 10px 0px;
+}
+
+.dark-grey-filter {
+  filter: invert(27%) sepia(22%) saturate(1190%) hue-rotate(161deg) brightness(87%) contrast(89%);
+}
+
+.square-300 {
+  width: 300px;
+  height: 300px;
+  aspect-ratio: 1;
+}
+
+h1.huge {
+  font-size: 3em;
+}
+
+h1.main {
+  border-bottom: 1px solid #d9d9d9ff;
+  font-size: 2em;
+}
+
+div.info-tag {
+  border: 2px #3c6e71ff solid;
+  border-radius: 1rem;
+  margin: 30px 0px;
+  padding: 0px 15px;
+}
+
+div.info-tag > h2:first-child {
+  color: #3c6e71ff;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.dark-txt {
+  color: #284b63ff;
+}
+
+ul {
+  padding-left: 1em;
+}
+
+li.list-button {
+  list-style: none;
+  cursor: pointer;
+}
+
+li.tab-1, li.tab-2, li.tab-3, li.tab-4, li.tab-5, li *.tab-6 {
+  margin: 0px 0px 0px 0px;
+}
+
+li.tab-1 {
+  margin-left: 0px !important;
+}
+
+li.tab-2 {
+  margin-left: 10px !important;
+}
+
+li.tab-3 {
+  margin-left: 20px !important;
+}
+
+li.tab-4 {
+  margin-left: 30px !important;
+}
+
+li.tab-5 {
+  margin-left: 40px !important;
+}
+
+li.tab-6 {
+  margin-left: 50px !important;
+}
+
+button.toggle-hide {
+  border: none;
+  padding: 8px;
+  transition: all 500ms;
+  height: 2em;
+  margin-left: 10px;
+  border-radius: 0.5em;
+}
+
+button.toggle-hide[data-hidden="true"] {
+  background-color: #3c6e71ff;
+}
+
+button.toggle-hide[data-hidden="true"]::before {
+  color: #ffffffff;
+  content: "Show";
+}
+
+button.toggle-hide[data-hidden="false"] {
+  background-color: #d9d9d9ff;
+}
+
+button.toggle-hide[data-hidden="false"]::before {
+  color: #353535ff;
+  content: "Hide";
 }

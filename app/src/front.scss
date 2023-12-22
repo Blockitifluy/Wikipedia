@@ -21,29 +21,6 @@ main {
 
   width: 100%;
   height: fit-content;
-
-  & > :nth-child(1) {
-    & > h1 {
-      font-size: 3em;
-      color: $jet;
-
-      & > span:nth-of-type(1) {
-        color: $platinum;
-        transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 500ms;
-
-        &:hover {
-          color: $indigo-dye;
-        }
-      }
-    }
-  }
-
-  & > :nth-child(2) {
-    width: 300px;
-    height: 300px;
-    aspect-ratio: 1;
-    filter: invert(27%) sepia(22%) saturate(1190%) hue-rotate(161deg) brightness(87%) contrast(89%);
-  }
 }
 
 #buttons {
@@ -51,44 +28,4 @@ main {
   flex-direction: row;
   width: 100%;
   margin-top: 15px;
-
-  * {
-    border-radius: 0.5rem;
-    border: none;
-    padding: 8px;
-    font-weight: 700;
-    margin-right: 10px;
-  }
-
-  button#random-page {
-    background-color: $caribbean-current;
-    color: $white;
-    cursor: pointer;
-  }
-
-  input#searchbar {
-    background-color: $platinum;
-    color: $jet;
-  }
-}
-
-#questions {
-  & > :first-child {
-    color: $jet;
-    width: 100%;
-    text-align: center;
-  }
-
-  & > details {
-    padding-left: 10px;
-    border-bottom: 1px solid $jet;
-
-    margin-bottom: 15px;
-
-    & > summary {
-      font-size: 1.5em;
-      font-weight: bold;
-      margin: 10px 10px 10px 0px;
-    }
-  }
 }
