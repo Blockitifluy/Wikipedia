@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <script src="https://kit.fontawesome.com/affb9721ec.js" crossorigin="anonymous"></script>
+
+  <script>
+    //Loads css
+    /**
+     * @type {string[]}
+     */
+    const urls = ["/app/resources/front.css", "/app/resources/global.css"];
+
+    for (let [_, url] of urls.entries()) {
+      fetch(url)
+      .then(r => r.text())
+      .then(file => {
+        let Stylesheet = document.createElement("style");
+        Stylesheet.textContent = file;
+  
+        document.querySelector("head").appendChild(Stylesheet)
+      });
+    }
+
+  </script>
+  <script src="/app/resources/search.js" defer></script>
+
+  <title>Wikipedia</title>
+  <link rel="icon" type="image/x-icon" href="/public/favicon.ico"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1 id="nav-title">Wikipedia</h1>
+    <div class="container">
+      <!--TODO: Add links to all-->
+      <a href="/" class="selected">
+        <i class="fa-solid fa-house"></i>
+        Home
+      </a>
+      <a href="">
+        <i class="fa-solid fa-book"></i>
+        Pages
+      </a>
+      <a href="">
+        <i class="fa-solid fa-user"></i>
+        Popular
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div id="hero">
+      <div>
+        <h1 class="huge">
+          Discover new Knowledge with 
+          <span class="light-txt">Wikipedia</span>
+        </h1>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis doloribus odio ducimus ex nisi quisquam illo facilis cumque ratione repudiandae accusamus consectetur minus nostrum, officia porro soluta dolore? Adipisci, doloremque.
+      </div>
+  
+      <object data="/public/Globle.svg" class="square-300 dark-grey-filter" type="image/svg+xml"></object>
+    </div>
+
+    <div id="buttons">
+      <button type="button" class="dark-input" id="random-page">Random Page</button>
+      <input type="text" name="" class="light-input" id="searchbar" placeholder="Search"/>
+    </div>
+
+    <div id="questions">
+      <h1 class="text-center">Frequently Asked Questions</h1>
+
+      <details>
+        <summary>How does Wikipedia Make Money?</summary>
+
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis consectetur quasi odio repellat dolorem accusantium illum debitis natus iusto atque deserunt, voluptatibus accusamus dignissimos mollitia excepturi cum enim ipsum saepe?
+        </p>
+      </details>
+
+      <details>
+        <summary>How can I Edit Pages?</summary>
+
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe, harum laboriosam maxime pariatur dolor repellendus eius vitae, dolore laudantium assumenda voluptatem. Reprehenderit accusantium obcaecati facere voluptatibus alias in adipisci voluptatum.
+        </p>
+      </details>
+
+      <details>
+        <summary>Who Owns Wikipedia?</summary>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum cupiditate quibusdam numquam, laborum eligendi vero molestias porro, officia sed consequatur, quasi incidunt odit! Pariatur praesentium excepturi reiciendis unde nobis cum.
+        </p>
+      </details>
+
+      <details>
+        <summary>How Many Languages does Wikipedia Translate to?</summary>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dicta deserunt in repellendus eum numquam ex voluptatibus aliquam! Aspernatur hic quaerat consectetur natus eaque optio. Possimus optio quibusdam autem dolorum.
+        </p>
+      </details>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <h2 class="light-txt">Wikipedia</h2>
+
+    <div class="midpoint">
+      <ul>
+        <h3 class="light-txt">Company</h3>
+        <li><a>About</a></li>
+        <li><a>Our Process</a></li>
+        <li><a>Join the Team</a></li>
+      </ul>
+
+      <ul>
+        <h3 class="light-txt">Resources</h3>
+        <li><a>News</a></li>
+        <li><a href="https://github.com/Blockitifluy/Wikipedia">Github</a></li>
+      </ul>
+
+      <ul>
+        <h3 class="light-txt">Connect</h3>
+        <li>Email Here@Mail.com</li>
+      </ul>
+    </div>
+
+    <p>&copy; 2023 Wikipedia: All Rights Reserved</p>
+  </footer>
+
+
+</body>
+</html>

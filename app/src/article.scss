@@ -1,73 +1,29 @@
-$dark-moss-green: #606c38ff;
-$pakistan-green: #283618ff;
-$cornsilk: #fefae0ff;
-$earth-yellow: #dda15eff;
-$tigers-eye: #bc6c25ff;
+$jet: #353535ff;
+$caribbean-current: #3c6e71ff;
+$white: #ffffffff;
+$platinum: #d9d9d9ff;
+$indigo-dye: #284b63ff;
 
-body {
-  margin: 0px;
-  padding: 0px;
-  background-color: $cornsilk;
-  color: $pakistan-green;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-image: url("/public/navagation_background.jpg");
-  background-repeat: no-repeat;
-
-  width: 100vw;
-  height: 20em;
-
-  #web-card {
-    border-radius: 1rem;
-
-    height: fit-content;
-    padding: 10px;
-    background-color: transparent;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    & > h1 {
-      width: 100%;
-      text-align: center;
-      font-size: 3em;
-      margin: 0px;
-      color: $earth-yellow;
-      margin-bottom: 20px;
-    }
-
-    & > input[type=text] {
-      border-radius: 0.5rem;
-      padding: 10px;
-      border: none;
-      text-align: center;
-      color: $tigers-eye;
-      background-color: $earth-yellow;
-      font-weight: bold;
-
-      &::placeholder, &::-ms-input-placeholder {
-        color: $cornsilk
-      }
-    }
-  }
-}
-
-article {
+main {
+  max-width: 100%;
+  width: 75em;
   margin: auto;
-  width: 50em;
   height: fit-content;
-  
-  & > #main-title {
-    font-size: 3em;
-    margin: 0px;
-    transform: translateY(-50%);
-    color: $dark-moss-green;
-    text-decoration: underline 5px $dark-moss-green;
+
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  column-gap: 10px;
+}
+
+#sidebar {
+  position: sticky;
+  height: fit-content;
+
+  #side-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px $platinum solid;
   }
 }

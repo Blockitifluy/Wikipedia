@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <script src="https://kit.fontawesome.com/affb9721ec.js" crossorigin="anonymous"></script>
+
+  <script>
+    //Loads css
+    /**
+     * @type {string[]}
+     */
+    const urls = ["/app/resources/article.css", "/app/resources/global.css"];
+
+    for (let [_, url] of urls.entries()) {
+      fetch(url)
+      .then(r => r.text())
+      .then(file => {
+        let Stylesheet = document.createElement("style");
+        Stylesheet.textContent = file;
+  
+        document.querySelector("head").appendChild(Stylesheet)
+      });
+    }
+
+  </script>
+
+  <script type="module" src="/app/resources/script.js" defer></script>
+  <title>Wikipedia</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+</head>
+<body>
+  </nav>
+  <nav class="navbar">
+    <h1 id="nav-title">Wikipedia</h1>
+    <div class="container">
+      <!--TODO: Add links to all-->
+      <a href="/">
+        <i class="fa-solid fa-house"></i>
+        Home
+      </a>
+      <a href="" class="selected">
+        <i class="fa-solid fa-book"></i>
+        Pages
+      </a>
+      <a href="">
+        <i class="fa-solid fa-user"></i>
+        Popular
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <div id="sidebar">
+      <div id="side-top">
+        <h1>Contents</h1>
+        <button class="Hide toggle-hide" data-hidden="false"></button>
+      </div>
+      <ul>
+        <li class="tab-1 dark-txt list-button">Header 1</li>
+        <li class="tab-1 dark-txt list-button">Header 1</li>
+        <li class="tab-2 dark-txt list-button">Header 2</li>
+        <li class="tab-2 dark-txt list-button">Header 2</li>
+        <li class="tab-2 dark-txt list-button">Header 2</li>
+        <li class="tab-1 dark-txt list-button">Header 1</li>
+        <li class="tab-2 dark-txt list-button">Header 2</li>
+        <li class="tab-3 dark-txt list-button">Header 3</li>
+      </ul>
+    </div>
+
+    <article>
+      <h1 class="main">Photosythesis</h1>
+
+      <div id="stub" class="hidden info-tag">
+        <h2>This page is a Stub</h2>
+        <p>Add/Edit content to improve this article</p>
+      </div>
+
+      <div id="content">
+        
+      </div>
+
+    </article>
+  </main>
+
+  <footer id="footer">
+    <h2>Wikipedia</h2>
+
+    <div class="midpoint">
+      <ul>
+        <h3>Company</h3>
+        <li><a>About</a></li>
+        <li><a>Our Process</a></li>
+        <li><a>Join the Team</a></li>
+      </ul>
+
+      <ul>
+        <h3>Resources</h3>
+        <li><a>News</a></li>
+        <li><a href="https://github.com/Blockitifluy/Wikipedia">Github</a></li>
+      </ul>
+
+      <ul>
+        <h3>Connect</h3>
+        <li>Email Here@Mail.com</li>
+      </ul>
+    </div>
+
+    <p>&copy; 2023 Wikipedia: All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>
