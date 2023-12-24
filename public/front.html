@@ -17,7 +17,7 @@
      */
     const urls = ["/app/resources/front.css", "/app/resources/global.css"];
 
-    for (let [_, url] of urls.entries()) {
+    for (let url of urls) {
       fetch(url)
       .then(r => r.text())
       .then(file => {

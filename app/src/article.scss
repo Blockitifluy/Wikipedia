@@ -14,6 +14,10 @@ main {
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
   column-gap: 10px;
+
+  #content > h1  {
+    border-bottom: $platinum 1px solid;
+  }
 }
 
 #sidebar {
@@ -25,5 +29,29 @@ main {
     flex-direction: row;
     align-items: center;
     border-bottom: 1px $platinum solid;
+  }
+}
+
+.image-section {
+  border-radius: 1rem;
+  border: $indigo-dye 2px solid;
+  width: fit-content;
+  padding: 5px;
+  float: right;
+
+  & > img {
+    border-radius: 1rem;
+    display: block;
+    margin: auto;
+    width: 10em;
+  }
+
+  & > span {
+    display: block;
+    margin: auto;
+    margin-top: 5px;
+    color: $indigo-dye;
+    padding: 0px 5px;
+    text-align: center;
   }
 }

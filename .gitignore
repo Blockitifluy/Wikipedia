@@ -3,3 +3,6 @@ server/__pycache__
 node_modules
 package-lock.json
 package.json
+app/resources/global.css.map
+app/resources/article.css.map
+app/resources/front.css.map

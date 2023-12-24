@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2022",
     "lib": ["dom", "dom.iterable", "ES2022", "ES2022.Array", "ES2022.Object"],
     "allowJs": true,
     "importHelpers": false,
@@ -8,7 +8,7 @@
     "skipLibCheck": false,
     "strict": false,
     "noEmit": false,
-    "removeComments": false,
+    "removeComments": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",

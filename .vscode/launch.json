@@ -8,15 +8,6 @@
       "program": "${workspaceFolder}/server/server.py",
       "console": "integratedTerminal",
       "justMyCode": true
-    },
-    
-    {
-      "name": "API Launcher",
-      "type": "python",
-      "request": "launch",
-      "program": "${workspaceFolder}/server/api.py",
-      "console": "integratedTerminal",
-      "justMyCode": true
     }
   ]
 }

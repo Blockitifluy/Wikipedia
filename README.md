@@ -33,7 +33,13 @@ Colour scheme link: [Coolors](https://coolors.co/606c38-283618-fefae0-dda15e-bc6
 
 ### Inlines
 
-* Inline Links `<[Name](Link)>` [^2]
+* Inline Links `[Name](Link)`, [^2]
+* Bold Text `__Hello World__`,
+* Italic Text `_Hello World_`
 
 [^1]: Levels only range to 1 to 6, if not in the range it will throw an error
-[^2]: Can the `[]` and `()`'s positions are interchangable, and `[]` can be removed
+[^2]: `[]` can be removed
+
+## Commands
+
+* To compile scss to css by using `sass --style compressed --watch ./app/src:./app/resources`,

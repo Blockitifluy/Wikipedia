@@ -94,10 +94,15 @@ footer {
     width: 50em;
 
     & > ul {
+& > h3 {
+        color: $platinum;
+      }
+
       & > li {
         color: $white;
         text-decoration: none;
         list-style: none;
+
 
         & > a {
           text-decoration: none;
@@ -127,7 +132,7 @@ button {
 }
 
 .light-txt {
-  color: $platinum;
+  color: $platinum !important;
 }
 
 .dark-input, .light-input {
@@ -209,7 +214,7 @@ li {
     cursor: pointer;
   }
 
-  &.tab-1, &.tab-2, &.tab-3, &.tab-4, &.tab-5, *.tab-6 {
+  &.tab-1, &.tab-2, &.tab-3, &.tab-4, &.tab-5, &.tab-6 {
     margin: 0px 0px 0px 0px;
   }
 

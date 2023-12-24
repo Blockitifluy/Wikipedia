@@ -1,5 +1,6 @@
-import { BinarySearch } from "./Utility"
-import Syntax, { MetaRegex, LineRegex } from "./Syntax"
+
+import { SplitAndTrim } from "./Utility"
+import Syntax, { MetaRegex, LineRegex, TagSyntax } from "./Syntax"
 
 /**
  * The page as an object
@@ -26,7 +27,8 @@ interface PageMetadata {
 
 const ContentDiv : HTMLDivElement = document.querySelector("article > #content") as any,
 StubDiv : HTMLDivElement = document.querySelector("#stub"),
-MainTitle : HTMLHeadingElement = document.querySelector("article > .main");
+MainTitle : HTMLHeadingElement = document.querySelector("article > .main"),
+SidebarList : HTMLUListElement = document.querySelector("#sidebar > ul");
 
 /**
  * The page data for the article.
@@ -42,48 +44,44 @@ let PageData : PageContent = {
   Content : []
 };
 
-/**
- * If the string inside the split array matches then do the function
- * @param Regex Matches the string from the split array
- * @param split An array of strings meaning a different tag
- * @param funct The function to be executed when the Regex matches
- */
-function SearchRegExp(Regex : RegExp, split : string[], funct : (match : RegExpMatchArray) => void) {
+function GetValidSyntax(str : string) : [TagSyntax, RegExpMatchArray] {
+  console.log(`Getting valid syntax for ${str}`);
 
-  BinarySearch<string>(split, (val : string) => { //O(log n)
-    let match : RegExpMatchArray | null = val.trim().match(Regex),
-    doesMatch : boolean = match !== null;
-
+  for (let SyntaxTag of Syntax) {
+    
+    const Match : RegExpMatchArray | null = str.match(SyntaxTag.search),
+    doesMatch : boolean = Match !== null;
+    
     if (!doesMatch) {
-      return false;
+      continue;
     }
 
-    funct(match);
+    return [SyntaxTag, Match];
+  }
 
-    return true
-  })
-
+  throw new Error(`Text ${str} doesn't match with any syntax`);
 }
 
-function LoadContent(rawContent : string) : HTMLElement[] {
+function LoadContent(split : string[]) : HTMLElement[] {
   let Content : HTMLElement[] = [];
 
-  const split : string[] = rawContent.split(LineRegex);
+  let step : number = 0;
 
-  for (let TagType of Syntax) { //O(n log n)
-    
-    SearchRegExp(TagType.search, split, (match : RegExpMatchArray) => {
-      const FormedElement : HTMLElement | null = TagType.Form(match);
+  do {
+    const val : string = split[step];
 
-      if (!FormedElement) { //If Formed Element === null, then skip it
-        return;
+    const [SyntaxTag, Match] = GetValidSyntax(val);
+
+    let LoadedHTML = SyntaxTag.Form(Match);
+
+      if (!LoadedHTML) {
+      step++;
+      continue;
       }
 
-      //Appends FormedElement to Content
-      Content = [...Content, FormedElement]
-    });
-
-  }
+      step++;
+      Content = [...Content, LoadedHTML];
+  } while (step < split.length)
 
   return Content;
 }
@@ -93,22 +91,60 @@ function LoadContent(rawContent : string) : HTMLElement[] {
  * @param rawContent The raw content
  * @returns Metadata
  */
-function LoadMeta(rawContent : string) : PageMetadata {
+function LoadMeta(split : string[]) : PageMetadata {
   //Basic Metadata
   let Meta : PageMetadata = {title : "Loading...", stub : false};
 
-  //*Splits the lines based on the LineRegex
-  const split : string[] = rawContent.split(LineRegex);
-  
-  SearchRegExp(MetaRegex, split, (match) => { //?O(log n)
-    //Checks if the tag doesn't have value, the value is true //?eg. {stub}
-    let hasValue : boolean = match[2] !== undefined,
-    key : string = match[1];
+  let step : number = 0;
 
-    Meta[key] = hasValue ? match[2] : true;
-  });
+  console.group("Loading Metatags")
+
+  do {
+    const val : string = split[step];
+
+    const Match : RegExpMatchArray | null = val.match(MetaRegex),
+    doesMatch : boolean = Match !== null;
+
+    if (!doesMatch) {
+      console.log(`Text ${val} doesn't match with ${MetaRegex}.`);
+
+      step++;
+
+      continue;
+    } //Passes
+
+    let hasValue : boolean = Match[2] !== undefined,
+    key : string = Match[1];
+
+    console.log(`${val} matches and has the key: ${key} and has the value of ${Match[2]}`);
+
+    Meta[key] = hasValue ? Match[2] : true;
+
+    step++;
+  } while (step < split.length)
+
+  console.groupEnd();
 
   return Meta;
+}
+
+const SideHeaderSearch : string[] = ['#content > h1', '#content > h2', '#content > h3', '#content > h4', '#content > h5', '#content > h6'];
+
+function LoadSideHeaders() {
+  const Headers : NodeListOf<HTMLHeadingElement> = document.querySelectorAll<HTMLHeadingElement>(SideHeaderSearch.join(','));
+  
+  for (let Header of Headers) {
+    let level : string = Header.tagName.match(/H(\d)/)[1];
+
+    const HeaderListItem : HTMLLIElement = document.createElement('li');
+    HeaderListItem.className = `tab-${level} dark-txt list-button`;
+    HeaderListItem.innerHTML = Header.innerHTML;
+    SidebarList.appendChild(HeaderListItem);
+
+    HeaderListItem.addEventListener('click', () => {
+      Header.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+    });
+  }
 }
 
 /**
@@ -122,8 +158,12 @@ function LoadPage() {
   const fileName = decodeURIComponent(urlParams.get("page"));
   
   GeneratingPage(fileName).then(() => {
+const preComputeTime = Date.now() 
+
+    let split : string[] = SplitAndTrim(PageData.rawContent, LineRegex);
+    
     //*Loads in the the metadata eg. Title
-    PageData.Metadata = LoadMeta(PageData.rawContent);
+    PageData.Metadata = LoadMeta(split);
 
     //Hides or Show the Stub info card based on the Metadata's stub value
     StubDiv.setAttribute("data-hidden", PageData.Metadata.stub ? "1" : "0");
@@ -133,13 +173,17 @@ function LoadPage() {
     MainTitle.innerText = PageData.Metadata.title;
 
     //*Generates the page using the rawContent
-    PageData.Content = LoadContent(PageData.rawContent);
-    console.log(PageData.Content);
+    PageData.Content = LoadContent(split);
     
     PageData.Content.forEach((PageElement : HTMLElement) => {
       //*Loads in the Content to the page
+
       ContentDiv.appendChild(PageElement); 
     });
+
+    LoadSideHeaders();
+
+    console.info(`Loading took ${Date.now() - preComputeTime} ms to execute.`)
   });
 
 }

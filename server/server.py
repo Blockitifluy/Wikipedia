@@ -66,42 +66,11 @@ class Server(http.BaseHTTPRequestHandler):
     self.end_headers()
     self.wfile.write(content)
 
+webServer = http.HTTPServer((HOST_NAME, PORT), Server)
 
-def load_server():
-  webServer = http.HTTPServer((HOST_NAME, PORT), Server)
+try:
+  webServer.serve_forever()
+except KeyboardInterrupt:
+  pass
 
-  try:
-    webServer.serve_forever()
-  except KeyboardInterrupt:
-    pass
-
-  webServer.server_close()
-
-def compile_f():
-  import compile
-
-  compile.scss_to_css()
-  compile.ts_to_js()
-
-  print("Finished compiling sass stylesheets")
-
-global choice_broken
-choice_broken : bool = False
-
-while not choice_broken:
-  choice = input("compile, start or quit (c, s, q): ")
-
-  match choice:
-    case "c":
-      print("Compiling Scripts and Stylesheets")
-
-      compile_f()
-    case "s":
-      print("Starting Servers")
-
-      load_server()
-      choice_broken = True
-    case other:
-      print("Quiting")
-      choice_broken = True
-    
+webServer.server_close()

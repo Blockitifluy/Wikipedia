@@ -9,28 +9,30 @@ export function BinarySearch<t>(arr : t[], funct : (v : t) => boolean) : [t | nu
   let end : number = arr.length - 1;
 
   while (start <= end) {
-    console.count()
     let mid : number = Math.floor((start + end) / 2);
 
-    if (funct(arr[mid])) {
-      console.countReset()
+    if (funct(arr[mid]))
       return [arr[mid], mid];
-    }
 
-    if (funct(arr[start])) {
-      console.countReset()
-      return [arr[start], start]
-    }
+    if (funct(arr[start]))
+      return [arr[start], start];
 
-    if (funct(arr[end])) {
-      console.countReset()
-      return [arr[end], end]
-    }
+    if (funct(arr[end]))
+      return [arr[end], end];
 
     start += 1;
     end -= 1
   }
-
-  console.countReset()
+  
   return [null, -1]
+}
+
+export function SplitAndTrim(text : string, div : string | RegExp) : string[] {
+  let split : string[] = text.split(div);
+
+  for (let [i, str] of split.entries()) {
+    split[i] = str.trim();
+  }
+  
+  return split;
 }
